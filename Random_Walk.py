@@ -30,12 +30,18 @@ class Point:
         self.y = y
 
     # This method changes the Point's coordinates (its position).
-    def move(self):
+    def move(self,width,height):
         # The Point randomly moves in the x-direction by adding one of the 'possibilities' (1, 0, or -1).
         self.x += random.choice(possibilities)
         # The Point also randomly moves in the y-direction.
         self.y += random.choice(possibilities)
-
+      
+        a =self.x + random.choice(possibilities)
+        b =self.y + random.choice(possibilities)
+          if 0 <= a < width :
+            a = self.x
+          if 0 <= b < height :
+            b = self.y 
     # This method simply prints the Point's current coordinates to the console.
     def display(self):
         # The 'f-string' (f"...") allows easy embedding of variables inside the string.
@@ -106,8 +112,8 @@ while True:
     G1.display_grid()
 
     # 2. Move the points to a new, random location.
-    p1.move()
-    p2.move()
+    p1.move(G1.width, G1.height)
+    p2.move(G1.width, G1.height)
 
     # 3. Pause the program for 0.5 seconds so the user can see the movement.
     time.sleep(0.5)
